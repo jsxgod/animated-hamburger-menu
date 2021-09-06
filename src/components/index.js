@@ -1,0 +1,6 @@
+export { default as Header } from './Header'
+export { default as Menu } from './Menu'
+export { default as Home } from './Home'
+export { default as Opportunities } from './Opportunities'
+export { default as Solutions } from './Solutions'
+export { default as Contact } from './Contact'
