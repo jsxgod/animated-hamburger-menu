@@ -1,8 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu } from ".";
 
 const Header = () => {
+
+  const [menuState, setMenuState] = useState({
+    initial: false,
+    clicked: null,
+    display: "Menu"
+  })
+
+  const [btnState, setBtnState] = useState(true)
+
+  // prevent spam clicking the menu button
+  const disableMenu = () => {
+    setBtnState(!btnState)
+    setTimeout(() => {
+      setBtnState(true);
+    }, 2000);
+  }
+
+  const handleMenu = () => {
+    disableMenu();
+
+    if(menuState.initial === false){
+      setMenuState({
+        initial: null,
+        clicked: true,
+        display: "Close"
+      })
+    } else if (menuState.clicked === true) {
+      setMenuState({
+        clicked: !menuState.clicked,
+        display: "Menu"
+      })
+    } else if (menuState.clicked === false) {
+      setMenuState({
+        clicked: !menuState.clicked,
+        display: "Close"
+      })
+    }
+  }
+
+
   return (
     <header>
       <div className="container">
@@ -12,7 +52,7 @@ const Header = () => {
               <Link to="/">COMPANY</Link>
             </div>
             <div className="menu-btn">
-              <button>Menu</button>
+              <button disabled={!btnState} onClick={handleMenu}>Menu</button>
             </div>
           </div>
         </div>
