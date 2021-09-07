@@ -49,6 +49,24 @@ const staggerText = (nodes) => {
     });
 }
 
+const tiltText = (event, isTilted) => {
+    if (isTilted === false) {
+        gsap.to(event.target, {
+            duration: 0.3,
+            y: 3,
+            skewX: 4,
+            ease: 'power3.inOut'
+        })
+    } else if (isTilted === true) {
+        gsap.to(event.target, {
+            duration: 0.3,
+            y: -3,
+            skewX: 0,
+            ease: 'power3.inOut'
+        })
+    }
+}
+
 const fadeInMoveUp = (node) => {
     gsap.from(node, {
         y: 60,
@@ -83,6 +101,7 @@ const animations = {
     openMenu,
     hideMenu,
     staggerText,
+    tiltText,
     fadeInMoveUp,
     changeBackground,
     removeBackground

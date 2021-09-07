@@ -38,13 +38,13 @@ const Menu = ({state}) => {
               <nav>
                 <ul>
                   <li>
-                    <Link ref={el => (line1 = el)} to="/opportunities">Opportunities</Link>
+                    <Link ref={el => (line1 = el)} to="/opportunities" onMouseEnter={e => animations.tiltText(e, false)} onMouseOut={e => animations.tiltText(e, true)}>Opportunities</Link>
                   </li>
                   <li>
-                    <Link ref={el => (line2 = el)} to="/solutions">Solutions</Link>
+                    <Link ref={el => (line2 = el)} to="/solutions" onMouseEnter={e => animations.tiltText(e, false)} onMouseOut={e => animations.tiltText(e, true)}>Solutions</Link>
                   </li>
                   <li>
-                    <Link ref={el => (line3 = el)} to="/contact">Contact us</Link>
+                    <Link ref={el => (line3 = el)} to="/contact" onMouseEnter={e => animations.tiltText(e, false)} onMouseOut={e => animations.tiltText(e, true)}>Contact us</Link>
                   </li>
                 </ul>
               </nav>
@@ -61,7 +61,7 @@ const Menu = ({state}) => {
               </div>
               <div className="locations">
                 Locations:
-                {cities.map( el => (
+                {cities.map(el => (
                   <span key={el.name} onMouseEnter={() => animations.changeBackground(cityBackground, el.image)} onMouseOut={() => animations.removeBackground(cityBackground)}>
                     {el.name}
                   </span>                 
