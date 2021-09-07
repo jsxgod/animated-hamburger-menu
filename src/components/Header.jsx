@@ -26,7 +26,7 @@ const Header = ({ history }) => {
     setBtnState(!btnState)
     setTimeout(() => {
       setBtnState(true);
-    }, 2000);
+    }, 1200);
   }
 
   const handleMenu = () => {
