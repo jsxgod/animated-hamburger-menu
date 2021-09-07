@@ -59,11 +59,33 @@ const fadeInMoveUp = (node) => {
     });
 }
 
+const changeBackground = (node, img) => {
+    gsap.to(node, {
+        duration: 0,
+        background: `url(${img}) center center`
+    });
+    gsap.to(node, {
+        duration: 0.4,
+        opacity: 1,
+        ease: "power3.inOut"
+    });
+}
+
+const removeBackground = (node) => {
+    gsap.to(node, {
+        duration: 0.4,
+        opacity: 0,
+        ease: "power3.inOut"
+    })
+}
+
 const animations = {
     openMenu,
     hideMenu,
     staggerText,
-    fadeInMoveUp
+    fadeInMoveUp,
+    changeBackground,
+    removeBackground
 };
 
 export default animations;
