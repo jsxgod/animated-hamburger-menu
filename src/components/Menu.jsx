@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
+import animations from "./animations";
 
 const Menu = ({state}) => {
 
@@ -15,47 +15,16 @@ const Menu = ({state}) => {
 
   useEffect(() => {
     if(state.clicked === false) {
-      gsap.to([revealMenu, revealMenuBackground], {
-        duration: 0.8,
-        height: 0,
-        ease: 'power3.inOut',
-        stagger: {
-          amount: 0.07
-        }
-      });
-      gsap.to(menu, {
-        duration: 1,
-        css: { display: "none" }
-      })
+      animations.hideMenu(revealMenu, revealMenuBackground, menu);
     } else if (
       state.clicked === true ||
       (state.clicked === true && state.initial === null)
     ) {
-      gsap.to(menu, {
-        duration: 0,
-        css: { display: "block"}
-      });
-      gsap.to([revealMenuBackground, revealMenu], {
-        duration: 0,
-        opacity: 1,
-        height: "100%",
-      }); 
-      openMenu(revealMenuBackground, revealMenu);
+      animations.openMenu(revealMenuBackground, revealMenu, menu);
+      animations.staggerText([line1, line2, line3]);
+      animations.fadeInMoveUp(info);
     }
   }, [state])
-
-  const openMenu = (firstNode, secondNode) => {
-    gsap.from([firstNode, secondNode], {
-      duration: 0.8,
-      height: 0,
-      transformOrigin: "right top",
-      skewY: 2,
-      ease: 'power3.inOut',
-      stagger: {
-        amount: 0.1
-      }
-    })
-  }
 
   return (
     <div ref={el => (menu = el)} className="menu">
