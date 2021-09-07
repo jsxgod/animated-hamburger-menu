@@ -57,7 +57,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <Menu />
+      <Menu state={menuState} />
     </header>
   );
 };
