@@ -1,16 +1,25 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { withRouter, Link } from "react-router-dom";
 import { Menu } from ".";
 
-const Header = () => {
+const Header = ({ history }) => {
 
   const [menuState, setMenuState] = useState({
     initial: false,
     clicked: null,
     display: "Menu"
-  })
+  });
 
-  const [btnState, setBtnState] = useState(true)
+  const [btnState, setBtnState] = useState(true);
+
+  useEffect(() => {
+    history.listen(() => {
+      setMenuState({
+        clicked: false,
+        display: "Menu"
+      });
+    })
+  })
 
   // prevent spam clicking the menu button
   const disableMenu = () => {
@@ -62,4 +71,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default withRouter(Header);
