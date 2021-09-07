@@ -61,7 +61,7 @@ const Header = ({ history }) => {
               <Link to="/">COMPANY</Link>
             </div>
             <div className="menu-btn">
-              <button disabled={!btnState} onClick={handleMenu}>Menu</button>
+              <button disabled={!btnState} onClick={handleMenu}>{menuState.display}</button>
             </div>
           </div>
         </div>
