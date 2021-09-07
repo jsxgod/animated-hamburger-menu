@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import animations from "./animations";
+import cities from "./cities";
 
 const Menu = ({state}) => {
 
@@ -30,7 +31,7 @@ const Menu = ({state}) => {
     <div ref={el => (menu = el)} className="menu">
       <div ref={el => (revealMenuBackground = el)} className="menu-secondary-bg-color"></div>
       <div ref={el => (revealMenu = el)} className="menu-layer">
-        <div className="menu-background"></div>
+        <div ref={el => (cityBackground = el)} className="menu-background"></div>
         <div className="container">
           <div className="wrapper">
             <div className="menu-links">
@@ -60,11 +61,11 @@ const Menu = ({state}) => {
               </div>
               <div className="locations">
                 Locations:
-                <span>Dallas</span>
-                <span>Austin</span>
-                <span>New York</span>
-                <span>San Francisco</span>
-                <span>Beijing</span>
+                {cities.map( el => (
+                  <span key={el.name} onMouseEnter={() => animations.changeBackground(cityBackground, el.image)} onMouseOut={() => animations.removeBackground(cityBackground)}>
+                    {el.name}
+                  </span>                 
+                ))}
               </div>
             </div>
           </div>
